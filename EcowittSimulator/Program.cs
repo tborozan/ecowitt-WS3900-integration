@@ -1,13 +1,12 @@
 ﻿using System.Net.Http.Headers;
 
-// Args: [baseUrl] [intervalSeconds] [count] [amplitudeC] [periodSeconds] [baselineC] [phaseDeg]
-string baseUrl = args.Length > 0 ? args[0] : "http://localhost:8080"; // default local API port
+string baseUrl = Environment.GetEnvironmentVariable("SIM_TARGET_URL") ?? "http://localhost:8080"; // default local API port
 const int intervalSeconds = 10;
 const int count = 0;
 const double amplitudeC = 5;
 const double periodSeconds = 600;
 const double baselineC = 20.0;
-double phaseDeg = args.Length > 6 && double.TryParse(args[6], out double ph) ? ph : 0.0; // phase shift
+const double phaseDeg = 0.0; // phase shift
 
 DateTime startUtc = DateTime.UtcNow;
 
